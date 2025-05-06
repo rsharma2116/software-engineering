@@ -22,29 +22,39 @@ export default function App() {
 
   if (!loggedIn) {
     return (
-      <div className="p-4 max-w-md mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Openverse App</h1>
-        <RegisterForm />
-        <LoginForm onLogin={() => setLoggedIn(true)} />
+      <div
+        className="w-full h-full bg-cover bg-center bg-no-repeat flex items-center justify-center px-4"
+        style={{ backgroundImage: "url('/login-bg.jpg')" }}
+      >
+        <div className="bg-blue-500 bg-opacity-80 p-10 md:p-12 rounded-lg shadow-xl w-full max-w-lg text-white">
+          <h1 className="text-3xl font-bold mb-6 text-center">OPENVERSE LOGIN</h1>
+          <RegisterForm />
+          <LoginForm onLogin={() => setLoggedIn(true)} />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold">Openverse Media Search</h1>
-        <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded">
-          Logout
-        </button>
-      </div>
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat p-4"
+      style={{ backgroundImage: "url('/search-bg.jpg')" }}
+    >
+      <div className="max-w-4xl mx-auto bg-white bg-opacity-90 p-6 rounded shadow">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-3xl font-bold text-blue-800">Openverse Media Search</h1>
+          <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded">
+            Logout
+          </button>
+        </div>
 
-      <SearchForm setResults={setResults} />
-      {results.length > 0 && <MediaResults results={results} />}
-      
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-2">Recent Searches</h2>
-        <HistoryList />
+        <SearchForm setResults={setResults} />
+        {results.length > 0 && <MediaResults results={results} />}
+
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold mb-2">Recent Searches</h2>
+          <HistoryList />
+        </div>
       </div>
     </div>
   );
